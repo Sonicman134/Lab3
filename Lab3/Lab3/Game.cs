@@ -18,6 +18,11 @@ namespace Lab3
             players.Add(new Player());
             musicPlayer.NextSong();
         }
+        public void PlayerAnswering(int pl)
+        {
+            players[pl].state = 1;
+            musicPlayer.Stop();
+        }
         public MusicPlayer GetMusicPlayer()
         {
             return musicPlayer;

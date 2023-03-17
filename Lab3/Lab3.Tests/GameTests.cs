@@ -27,9 +27,22 @@ namespace Lab3.Tests
             string s = Directory.GetCurrentDirectory() + "\\testMusic\\";
             Assert.AreEqual(s + "Somnus.mp3", music.GetSongURL());
             Assert.AreEqual(true, music.GetState());
-            Assert.AreEqual(0, pls[0].GetScore());
-            Assert.AreEqual(0, pls[1].GetScore());
-            Assert.AreEqual(0, pls[2].GetScore());
+            Assert.AreEqual(0, pls[0].score);
+            Assert.AreEqual(0, pls[1].score);
+            Assert.AreEqual(0, pls[2].score);
+        }
+        [TestMethod]
+        public void PlayerAnswering1()
+        {
+            Game game = new Game();
+            game.StartGame("testMusic");
+            game.PlayerAnswering(1);
+            MusicPlayer music = game.GetMusicPlayer();
+            List<Player> pls = game.GetPlayers();
+            Assert.AreEqual(false, music.GetState());
+            Assert.AreEqual(0, pls[0].state);
+            Assert.AreEqual(1, pls[1].state);
+            Assert.AreEqual(0, pls[2].state);
         }
     }
 }

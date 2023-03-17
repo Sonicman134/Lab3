@@ -8,10 +8,7 @@ namespace Lab3
 {
     public class Player
     {
-        int score = 0;
-        public int GetScore()
-        {
-            return score;
-        }
+        public int score = 0;
+        public int state = 0; //0 - игрок ничего не делает, 1 - отвечает, 2 - ответил не правильно и не может отвечать в данном раунде
     }
 }
