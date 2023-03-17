@@ -39,7 +39,7 @@ namespace Lab3.Tests
         public void Play3()
         {
             MusicPlayer musicPlayer = new MusicPlayer();
-            musicPlayer.SetSong("aaaaa.jpg");
+            musicPlayer.SetSong("testMusic\\aaaaa.jpg");
             musicPlayer.Play();
             Assert.AreEqual(false, musicPlayer.GetState());
             Assert.AreEqual("", musicPlayer.GetSongURL());
@@ -76,6 +76,18 @@ namespace Lab3.Tests
             musicPlayer.SetSong("testMusic\\Somnus.mp3");
             Assert.AreEqual(Directory.GetCurrentDirectory() + "\\testMusic\\Somnus.mp3", musicPlayer.GetSongURL());
             Assert.AreEqual("Somnus", musicPlayer.GetSong());
+        }
+        [TestMethod]
+        public void PlayList1()
+        {
+            MusicPlayer musicPlayer = new MusicPlayer();
+            musicPlayer.SetPlayList("testMusic");
+            string s = "testMusic\\";
+            List<string> pl = new List<string>();
+            pl.Add(s + "Somnus.mp3");
+            pl.Add(s + "The_Spirits_Converge.mp3");
+            pl.Add(s + "Valse_di_Fantastica.mp3");
+            CollectionAssert.AreEqual(pl, musicPlayer.GetPlayList());
         }
     }
 }

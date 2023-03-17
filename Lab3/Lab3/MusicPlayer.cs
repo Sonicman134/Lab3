@@ -13,6 +13,23 @@ namespace Lab3
         WindowsMediaPlayer player = new WindowsMediaPlayer();
         bool state = false; //Музыка играет - true, иначе - false
         string songName;
+        List<string> playlist;
+        public void SetPlayList(string path)
+        {
+            playlist = Directory.GetFiles(path).ToList();
+            for (int i = 0; i < playlist.Count; i++)
+            {
+                if (".mp3" != playlist[i].Substring(playlist[i].LastIndexOf('.')))
+                {
+                    playlist.RemoveAt(i);
+                    i--;
+                }
+            }
+        }
+        public List<string> GetPlayList()
+        {
+            return new List<string>(playlist);
+        }
         public void Play()
         {
             if (songName != "")
