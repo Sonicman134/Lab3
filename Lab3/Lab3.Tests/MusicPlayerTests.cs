@@ -23,7 +23,7 @@ namespace Lab3.Tests
             MusicPlayer musicPlayer = new MusicPlayer();
             musicPlayer.Play("testMusic\\Somnus.mp3");
             Assert.AreEqual(true, musicPlayer.GetState());
-            Assert.AreEqual(Directory.GetCurrentDirectory() + "\\testMusic\\Somnus.mp3", musicPlayer.GetSong());
+            Assert.AreEqual(Directory.GetCurrentDirectory() + "\\testMusic\\Somnus.mp3", musicPlayer.GetSongURL());
         }
         [TestMethod]
         public void Play2()
@@ -31,7 +31,7 @@ namespace Lab3.Tests
             MusicPlayer musicPlayer = new MusicPlayer();
             musicPlayer.Play("testMusic\\The_Spirits_Converge.mp3");
             Assert.AreEqual(true, musicPlayer.GetState());
-            Assert.AreEqual(Directory.GetCurrentDirectory() + "\\testMusic\\The_Spirits_Converge.mp3", musicPlayer.GetSong());
+            Assert.AreEqual(Directory.GetCurrentDirectory() + "\\testMusic\\The_Spirits_Converge.mp3", musicPlayer.GetSongURL());
         }
         [TestMethod]
         public void Play3()
@@ -39,7 +39,7 @@ namespace Lab3.Tests
             MusicPlayer musicPlayer = new MusicPlayer();
             musicPlayer.Play("aaaaa.jpg");
             Assert.AreEqual(false, musicPlayer.GetState());
-            Assert.AreEqual("", musicPlayer.GetSong());
+            Assert.AreEqual("", musicPlayer.GetSongURL());
         }
         [TestMethod]
         public void Play4()
@@ -47,7 +47,7 @@ namespace Lab3.Tests
             MusicPlayer musicPlayer = new MusicPlayer();
             musicPlayer.Play("notExists.mp3");
             Assert.AreEqual(false, musicPlayer.GetState());
-            Assert.AreEqual("", musicPlayer.GetSong());
+            Assert.AreEqual("", musicPlayer.GetSongURL());
         }
         [TestMethod]
         public void Stop1()
@@ -63,6 +63,14 @@ namespace Lab3.Tests
             MusicPlayer musicPlayer = new MusicPlayer();
             musicPlayer.Stop();
             Assert.AreEqual(false, musicPlayer.GetState());
+        }
+        [TestMethod]
+        public void SetSong1()
+        {
+            MusicPlayer musicPlayer = new MusicPlayer();
+            musicPlayer.SetSong("testMusic\\Somnus.mp3");
+            Assert.AreEqual(Directory.GetCurrentDirectory() + "\\testMusic\\Somnus.mp3", musicPlayer.GetSongURL());
+            Assert.AreEqual("Somnus", musicPlayer.GetSong());
         }
     }
 }

@@ -12,11 +12,12 @@ namespace Lab3
     {
         WindowsMediaPlayer player = new WindowsMediaPlayer();
         bool state = false; //Музыка играет - true, иначе - false
+        string songName;
         public void Play(string song)
         {
             if (".mp3" == song.Substring(song.LastIndexOf('.')) && File.Exists(song))
             {
-                player.URL = song;
+                SetSong(song);
                 player.controls.play();
                 state = true;
             }
@@ -31,9 +32,19 @@ namespace Lab3
             player.controls.pause();
             state = false;
         }
-        public string GetSong()
+        public void SetSong(string song)
+        {
+            player.URL = song;
+            int a = song.LastIndexOf('\\');
+            songName = song.Substring(a + 1, song.LastIndexOf('.') - a - 1);
+        }
+        public string GetSongURL()
         {
             return player.URL;
+        }
+        public string GetSong()
+        {
+            return songName;
         }
         public bool GetState()
         {
