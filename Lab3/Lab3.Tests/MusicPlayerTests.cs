@@ -34,10 +34,33 @@ namespace Lab3.Tests
             Assert.AreEqual(Directory.GetCurrentDirectory() + "\\testMusic\\The_Spirits_Converge.mp3", musicPlayer.GetSong());
         }
         [TestMethod]
+        public void Play3()
+        {
+            MusicPlayer musicPlayer = new MusicPlayer();
+            musicPlayer.Play("aaaaa.jpg");
+            Assert.AreEqual(false, musicPlayer.GetState());
+            Assert.AreEqual("", musicPlayer.GetSong());
+        }
+        [TestMethod]
+        public void Play4()
+        {
+            MusicPlayer musicPlayer = new MusicPlayer();
+            musicPlayer.Play("notExists.mp3");
+            Assert.AreEqual(false, musicPlayer.GetState());
+            Assert.AreEqual("", musicPlayer.GetSong());
+        }
+        [TestMethod]
         public void Stop1()
         {
             MusicPlayer musicPlayer = new MusicPlayer();
             musicPlayer.Play("testMusic\\The_Spirits_Converge.mp3");
+            musicPlayer.Stop();
+            Assert.AreEqual(false, musicPlayer.GetState());
+        }
+        [TestMethod]
+        public void Stop2()
+        {
+            MusicPlayer musicPlayer = new MusicPlayer();
             musicPlayer.Stop();
             Assert.AreEqual(false, musicPlayer.GetState());
         }
