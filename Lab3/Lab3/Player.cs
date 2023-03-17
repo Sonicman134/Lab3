@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace Lab3
 {
-    class Player
+    public class Player
     {
         int score = 0;
+        public int GetScore()
+        {
+            return score;
+        }
     }
 }
