@@ -25,24 +25,34 @@ namespace Lab3
             musicPlayer.Stop();
             playerAnswering = pl;
         }
-        public void PlayerAnswered(int pl, string answer)
+        public bool PlayerAnswered(int pl, string answer)
         {
-            if(playerAnswering == pl)
+            if (playerAnswering == pl)
             {
+                playerAnswering = -1;
                 if (answer == musicPlayer.GetSong())
                 {
                     players[pl].score++;
-                    players[pl].state = 0;
-                    musicPlayer.NextSong();
+                    players[0].state = players[1].state = players[2].state = 0;
+                    return musicPlayer.NextSong();
                 }
-                else 
+                else
                 {
                     players[pl].score--;
-                    players[pl].state = 0;
-                    musicPlayer.Play();
+                    players[pl].state = 2;
+                    if (players[0].state == 2 && players[1].state == 2 && players[2].state == 2)
+                    {
+                        players[0].state = players[1].state = players[2].state = 0;
+                        return musicPlayer.NextSong();
+                    }
+                    else
+                    {
+                        musicPlayer.Play();
+                        return true;
+                    }
                 }
-                playerAnswering = -1;
             }
+            else return true;
         }
         public MusicPlayer GetMusicPlayer()
         {
