@@ -21,7 +21,8 @@ namespace Lab3.Tests
         public void Play1()
         {
             MusicPlayer musicPlayer = new MusicPlayer();
-            musicPlayer.Play("testMusic\\Somnus.mp3");
+            musicPlayer.SetSong("testMusic\\Somnus.mp3");
+            musicPlayer.Play();
             Assert.AreEqual(true, musicPlayer.GetState());
             Assert.AreEqual(Directory.GetCurrentDirectory() + "\\testMusic\\Somnus.mp3", musicPlayer.GetSongURL());
         }
@@ -29,7 +30,8 @@ namespace Lab3.Tests
         public void Play2()
         {
             MusicPlayer musicPlayer = new MusicPlayer();
-            musicPlayer.Play("testMusic\\The_Spirits_Converge.mp3");
+            musicPlayer.SetSong("testMusic\\The_Spirits_Converge.mp3");
+            musicPlayer.Play();
             Assert.AreEqual(true, musicPlayer.GetState());
             Assert.AreEqual(Directory.GetCurrentDirectory() + "\\testMusic\\The_Spirits_Converge.mp3", musicPlayer.GetSongURL());
         }
@@ -37,7 +39,8 @@ namespace Lab3.Tests
         public void Play3()
         {
             MusicPlayer musicPlayer = new MusicPlayer();
-            musicPlayer.Play("aaaaa.jpg");
+            musicPlayer.SetSong("aaaaa.jpg");
+            musicPlayer.Play();
             Assert.AreEqual(false, musicPlayer.GetState());
             Assert.AreEqual("", musicPlayer.GetSongURL());
         }
@@ -45,7 +48,8 @@ namespace Lab3.Tests
         public void Play4()
         {
             MusicPlayer musicPlayer = new MusicPlayer();
-            musicPlayer.Play("notExists.mp3");
+            musicPlayer.SetSong("notExists.mp3");
+            musicPlayer.Play();
             Assert.AreEqual(false, musicPlayer.GetState());
             Assert.AreEqual("", musicPlayer.GetSongURL());
         }
@@ -53,7 +57,8 @@ namespace Lab3.Tests
         public void Stop1()
         {
             MusicPlayer musicPlayer = new MusicPlayer();
-            musicPlayer.Play("testMusic\\The_Spirits_Converge.mp3");
+            musicPlayer.SetSong("testMusic\\The_Spirits_Converge.mp3");
+            musicPlayer.Play();
             musicPlayer.Stop();
             Assert.AreEqual(false, musicPlayer.GetState());
         }
