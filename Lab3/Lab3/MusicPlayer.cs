@@ -11,9 +11,9 @@ namespace Lab3
     {
         WindowsMediaPlayer player = new WindowsMediaPlayer();
         bool state = false; //Музыка играет - true, иначе - false
-        public void Play()
+        public void Play(string song)
         {
-            player.URL = "testMusic\\Somnus.mp3";
+            player.URL = song;
             player.controls.play();
             state = true;
         }

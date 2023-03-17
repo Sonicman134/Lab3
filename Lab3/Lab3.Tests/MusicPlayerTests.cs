@@ -21,15 +21,23 @@ namespace Lab3.Tests
         public void Play1()
         {
             MusicPlayer musicPlayer = new MusicPlayer();
-            musicPlayer.Play();
+            musicPlayer.Play("testMusic\\Somnus.mp3");
             Assert.AreEqual(true, musicPlayer.GetState());
             Assert.AreEqual(Directory.GetCurrentDirectory() + "\\testMusic\\Somnus.mp3", musicPlayer.GetSong());
+        }
+        [TestMethod]
+        public void Play2()
+        {
+            MusicPlayer musicPlayer = new MusicPlayer();
+            musicPlayer.Play("testMusic\\The_Spirits_Converge.mp3");
+            Assert.AreEqual(true, musicPlayer.GetState());
+            Assert.AreEqual(Directory.GetCurrentDirectory() + "\\testMusic\\The_Spirits_Converge.mp3", musicPlayer.GetSong());
         }
         [TestMethod]
         public void Stop1()
         {
             MusicPlayer musicPlayer = new MusicPlayer();
-            musicPlayer.Play();
+            musicPlayer.Play("testMusic\\The_Spirits_Converge.mp3");
             musicPlayer.Stop();
             Assert.AreEqual(false, musicPlayer.GetState());
         }
