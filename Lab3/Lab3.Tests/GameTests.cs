@@ -44,5 +44,17 @@ namespace Lab3.Tests
             Assert.AreEqual(1, pls[1].state);
             Assert.AreEqual(0, pls[2].state);
         }
+        [TestMethod]
+        public void PlayerAnswered1()
+        {
+            Game game = new Game();
+            game.StartGame("testMusic");
+            game.PlayerAnswering(1);
+            game.PlayerAnswered(1, "Somnus");
+            List<Player> pls = game.GetPlayers();
+            Assert.AreEqual(0, pls[0].score);
+            Assert.AreEqual(1, pls[1].score);
+            Assert.AreEqual(0, pls[2].score);
+        }
     }
 }

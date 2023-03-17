@@ -23,6 +23,10 @@ namespace Lab3
             players[pl].state = 1;
             musicPlayer.Stop();
         }
+        public void PlayerAnswered(int pl, string answer)
+        {
+            if (answer == musicPlayer.GetSong()) players[pl].score++;
+        }
         public MusicPlayer GetMusicPlayer()
         {
             return musicPlayer;
@@ -31,5 +35,7 @@ namespace Lab3
         {
             return new List<Player>(players);
         }
+
+        
     }
 }
