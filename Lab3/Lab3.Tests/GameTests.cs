@@ -83,5 +83,35 @@ namespace Lab3.Tests
             Assert.AreEqual(0, pls[1].score);
             Assert.AreEqual(0, pls[2].score);
         }
+        [TestMethod]
+        public void PlayerAnswered4()
+        {
+            Game game = new Game();
+            game.StartGame("testMusic");
+            game.PlayerAnswering(0);
+            game.PlayerAnswered(0, "aaa");
+            List<Player> pls = game.GetPlayers();
+            Assert.AreEqual(-1, pls[0].score);
+            Assert.AreEqual(0, pls[1].score);
+            Assert.AreEqual(0, pls[2].score);
+        }
+        [TestMethod]
+        public void PlayerAnswered5()
+        {
+            Game game = new Game();
+            game.StartGame("testMusic");
+            game.PlayerAnswering(0);
+            game.PlayerAnswered(0, "Somnus");
+            MusicPlayer music = game.GetMusicPlayer();
+            List<Player> pls = game.GetPlayers();
+            Assert.AreEqual(1, pls[0].score);
+            Assert.AreEqual(0, pls[1].score);
+            Assert.AreEqual(0, pls[2].score);
+            Assert.AreEqual(0, pls[0].state);
+            Assert.AreEqual(0, pls[1].state);
+            Assert.AreEqual(0, pls[2].state);
+            Assert.AreEqual(true, music.GetState());
+            Assert.AreEqual(Directory.GetCurrentDirectory() + "\\testMusic\\The_Spirits_Converge.mp3", music.GetSongURL());
+        }
     }
 }

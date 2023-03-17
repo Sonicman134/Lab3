@@ -29,7 +29,12 @@ namespace Lab3
         {
             if(playerAnswering == pl)
             {
-                if (answer == musicPlayer.GetSong()) players[pl].score++;
+                if (answer == musicPlayer.GetSong()) 
+                {
+                    players[pl].score++;
+                    players[pl].state = 0;
+                    musicPlayer.NextSong();
+                } 
                 else players[pl].score--;
             }
         }
