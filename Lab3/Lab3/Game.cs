@@ -19,6 +19,10 @@ namespace Lab3
             players.Add(new Player());
             musicPlayer.NextSong();
         }
+        public int GameEnd()
+        {
+            return players.IndexOf(players.OrderByDescending(x => x.score).First());
+        }
         public void PlayerAnswering(int pl)
         {
             players[pl].state = 1;

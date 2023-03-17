@@ -214,6 +214,7 @@ namespace Lab3.Tests
             Assert.AreEqual(0, pls[2].state);
             Assert.AreEqual(false, music.GetState());
             Assert.AreEqual(false, f);
+            Assert.AreEqual(1, game.GameEnd());
         }
     }
 }
