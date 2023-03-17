@@ -18,6 +18,7 @@ namespace Lab3
             players.Add(new Player());
             players.Add(new Player());
             musicPlayer.NextSong();
+            playerAnswering = -1;
         }
         public int GameEnd()
         {
