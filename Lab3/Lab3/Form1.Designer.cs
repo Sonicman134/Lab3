@@ -51,6 +51,7 @@ namespace Lab3
             this.Player1Button.TabIndex = 0;
             this.Player1Button.Text = "Ответить";
             this.Player1Button.UseVisualStyleBackColor = true;
+            this.Player1Button.Click += new System.EventHandler(this.Player1Button_Click);
             // 
             // Player2Button
             // 
@@ -60,6 +61,7 @@ namespace Lab3
             this.Player2Button.TabIndex = 1;
             this.Player2Button.Text = "Ответить";
             this.Player2Button.UseVisualStyleBackColor = true;
+            this.Player2Button.Click += new System.EventHandler(this.Player2Button_Click);
             // 
             // Player3Button
             // 
@@ -69,6 +71,7 @@ namespace Lab3
             this.Player3Button.TabIndex = 2;
             this.Player3Button.Text = "Ответить";
             this.Player3Button.UseVisualStyleBackColor = true;
+            this.Player3Button.Click += new System.EventHandler(this.Player3Button_Click);
             // 
             // StartButton
             // 
