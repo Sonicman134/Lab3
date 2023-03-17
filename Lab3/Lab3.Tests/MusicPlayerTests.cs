@@ -89,5 +89,21 @@ namespace Lab3.Tests
             pl.Add(s + "Valse_di_Fantastica.mp3");
             CollectionAssert.AreEqual(pl, musicPlayer.GetPlayList());
         }
+        [TestMethod]
+        public void PlayList2()
+        {
+            MusicPlayer musicPlayer = new MusicPlayer();
+            musicPlayer.SetPlayList("testMusic");
+            string s = Directory.GetCurrentDirectory() + "\\testMusic\\";
+            musicPlayer.NextSong();
+            Assert.AreEqual(s + "Somnus.mp3", musicPlayer.GetSongURL());
+            Assert.AreEqual(true, musicPlayer.GetState());
+            musicPlayer.NextSong();
+            Assert.AreEqual(s + "The_Spirits_Converge.mp3", musicPlayer.GetSongURL());
+            Assert.AreEqual(true, musicPlayer.GetState());
+            musicPlayer.NextSong();
+            Assert.AreEqual(s + "Valse_di_Fantastica.mp3", musicPlayer.GetSongURL());
+            Assert.AreEqual(true, musicPlayer.GetState());
+        }
     }
 }

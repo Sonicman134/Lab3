@@ -26,6 +26,12 @@ namespace Lab3
                 }
             }
         }
+        public void NextSong()
+        {
+            SetSong(playlist[0]);
+            playlist.RemoveAt(0);
+            Play();
+        }
         public List<string> GetPlayList()
         {
             return new List<string>(playlist);
