@@ -10,6 +10,7 @@ namespace Lab3
     {
         List<Player> players = new List<Player>();
         MusicPlayer musicPlayer = new MusicPlayer();
+        int playerAnswering = -1; //-1 - никто не отвечает
         public void StartGame(string path)
         {
             musicPlayer.SetPlayList(path);
@@ -22,10 +23,15 @@ namespace Lab3
         {
             players[pl].state = 1;
             musicPlayer.Stop();
+            playerAnswering = pl;
         }
         public void PlayerAnswered(int pl, string answer)
         {
-            if (answer == musicPlayer.GetSong()) players[pl].score++;
+            if(playerAnswering == pl)
+            {
+                if (answer == musicPlayer.GetSong()) players[pl].score++;
+                else players[pl].score--;
+            }
         }
         public MusicPlayer GetMusicPlayer()
         {
