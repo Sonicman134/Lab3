@@ -25,5 +25,13 @@ namespace Lab3.Tests
             Assert.AreEqual(true, musicPlayer.GetState());
             Assert.AreEqual(Directory.GetCurrentDirectory() + "\\testMusic\\Somnus.mp3", musicPlayer.GetSong());
         }
+        [TestMethod]
+        public void Stop1()
+        {
+            MusicPlayer musicPlayer = new MusicPlayer();
+            musicPlayer.Play();
+            musicPlayer.Stop();
+            Assert.AreEqual(false, musicPlayer.GetState());
+        }
     }
 }

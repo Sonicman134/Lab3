@@ -17,6 +17,11 @@ namespace Lab3
             player.controls.play();
             state = true;
         }
+        public void Stop()
+        {
+            player.controls.pause();
+            state = false;
+        }
         public string GetSong()
         {
             return player.URL;
