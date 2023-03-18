@@ -69,6 +69,11 @@ namespace Lab3
                 }
                 else
                 {
+                    List<Player> pls = game.GetPlayers();
+                    for (int i = 0; i < 3; i++)
+                    {
+                        labels[i].Text = pls[i].score.ToString();
+                    }
                     return game.GameEnd() + 1;
                 }
             }
@@ -109,7 +114,7 @@ namespace Lab3
             int a = PlayerReaction(1);
             if (a != 0)
             {
-                MessageBox.Show(a + "Игрок победил");
+                MessageBox.Show(a + " игрок победил");
             }
         }
 
