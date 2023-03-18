@@ -95,15 +95,22 @@ namespace Lab3.Tests
             MusicPlayer musicPlayer = new MusicPlayer();
             musicPlayer.SetPlayList("testMusic");
             string s = Directory.GetCurrentDirectory() + "\\testMusic\\";
+            List<string> songs = new List<string>();
+            songs.Add(s + "Somnus.mp3");
+            songs.Add(s + "The_Spirits_Converge.mp3");
+            songs.Add(s + "Valse_di_Fantastica.mp3");
             musicPlayer.NextSong();
-            Assert.AreEqual(s + "Somnus.mp3", musicPlayer.GetSongURL());
+            Assert.AreEqual(true, songs.Exists(x => x == musicPlayer.GetSongURL()));
             Assert.AreEqual(true, musicPlayer.GetState());
+            songs.Remove(musicPlayer.GetSongURL());
             musicPlayer.NextSong();
-            Assert.AreEqual(s + "The_Spirits_Converge.mp3", musicPlayer.GetSongURL());
+            Assert.AreEqual(true, songs.Exists(x => x == musicPlayer.GetSongURL()));
             Assert.AreEqual(true, musicPlayer.GetState());
+            songs.Remove(musicPlayer.GetSongURL());
             musicPlayer.NextSong();
-            Assert.AreEqual(s + "Valse_di_Fantastica.mp3", musicPlayer.GetSongURL());
+            Assert.AreEqual(true, songs.Exists(x => x == musicPlayer.GetSongURL()));
             Assert.AreEqual(true, musicPlayer.GetState());
+            songs.Remove(musicPlayer.GetSongURL());
         }
     }
 }

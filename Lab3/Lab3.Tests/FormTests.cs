@@ -48,10 +48,10 @@ namespace Lab3.Tests
             form.SetStartTextBox("testMusic");
             form.StartGame();
             form.PlayerReaction(1);
-            form.SetAnswer(1, "Somnus");
+            form.SetAnswer(1, form.GetAnswer());
             form.PlayerReaction(1);
             form.PlayerReaction(2);
-            form.SetAnswer(2, "Somnus");
+            form.SetAnswer(2, "aaa");
             form.PlayerReaction(2);
             List<Label> labels = form.GetLabels();
             Assert.AreEqual("0", labels[0].Text);
@@ -65,13 +65,13 @@ namespace Lab3.Tests
             form.SetStartTextBox("testMusic");
             form.StartGame();
             form.PlayerReaction(1);
-            form.SetAnswer(1, "Somnus");
+            form.SetAnswer(1, form.GetAnswer());
             form.PlayerReaction(1);
             form.PlayerReaction(2);
-            form.SetAnswer(2, "The_Spirits_Converge");
+            form.SetAnswer(2, form.GetAnswer());
             form.PlayerReaction(2);
             form.PlayerReaction(1);
-            form.SetAnswer(1, "Valse_di_Fantastica");
+            form.SetAnswer(1, form.GetAnswer());
             int a = form.PlayerReaction(1);
             Assert.AreEqual(2, a);
         }

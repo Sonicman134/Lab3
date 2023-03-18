@@ -25,7 +25,11 @@ namespace Lab3.Tests
             MusicPlayer music = game.GetMusicPlayer();
             List<Player> pls = game.GetPlayers();
             string s = Directory.GetCurrentDirectory() + "\\testMusic\\";
-            Assert.AreEqual(s + "Somnus.mp3", music.GetSongURL());
+            List<string> songs = new List<string>();
+            songs.Add(s + "Somnus.mp3");
+            songs.Add(s + "The_Spirits_Converge.mp3");
+            songs.Add(s + "Valse_di_Fantastica.mp3");
+            Assert.AreEqual(true, songs.Exists(x => x == music.GetSongURL()));
             Assert.AreEqual(true, music.GetState());
             Assert.AreEqual(0, pls[0].score);
             Assert.AreEqual(0, pls[1].score);
@@ -49,8 +53,9 @@ namespace Lab3.Tests
         {
             Game game = new Game();
             game.StartGame("testMusic");
+            MusicPlayer music = game.GetMusicPlayer();
             game.PlayerAnswering(1);
-            game.PlayerAnswered(1, "Somnus");
+            game.PlayerAnswered(1, music.GetSong());
             List<Player> pls = game.GetPlayers();
             Assert.AreEqual(0, pls[0].score);
             Assert.AreEqual(1, pls[1].score);
@@ -100,9 +105,11 @@ namespace Lab3.Tests
         {
             Game game = new Game();
             game.StartGame("testMusic");
-            game.PlayerAnswering(0);
-            game.PlayerAnswered(0, "Somnus");
             MusicPlayer music = game.GetMusicPlayer();
+            string firstSong = music.GetSong();
+            game.PlayerAnswering(0);
+            game.PlayerAnswered(0, firstSong);
+            music = game.GetMusicPlayer();
             List<Player> pls = game.GetPlayers();
             Assert.AreEqual(1, pls[0].score);
             Assert.AreEqual(0, pls[1].score);
@@ -111,15 +118,23 @@ namespace Lab3.Tests
             Assert.AreEqual(0, pls[1].state);
             Assert.AreEqual(0, pls[2].state);
             Assert.AreEqual(true, music.GetState());
-            Assert.AreEqual(Directory.GetCurrentDirectory() + "\\testMusic\\The_Spirits_Converge.mp3", music.GetSongURL());
+            string s = Directory.GetCurrentDirectory() + "\\testMusic\\";
+            List<string> songs = new List<string>();
+            songs.Add(s + "Somnus.mp3");
+            songs.Add(s + "The_Spirits_Converge.mp3");
+            songs.Add(s + "Valse_di_Fantastica.mp3");
+            Assert.AreEqual(true, songs.Exists(x => x == music.GetSongURL()));
+            Assert.AreNotEqual(firstSong, music.GetSongURL());
         }
         [TestMethod]
         public void PlayerAnswered6()
         {
             Game game = new Game();
             game.StartGame("testMusic");
-            game.PlayerAnswered(0, "Somnus");
             MusicPlayer music = game.GetMusicPlayer();
+            string url = music.GetSongURL();
+            game.PlayerAnswered(0, music.GetSong());
+            music = game.GetMusicPlayer();
             List<Player> pls = game.GetPlayers();
             Assert.AreEqual(0, pls[0].score);
             Assert.AreEqual(0, pls[1].score);
@@ -128,18 +143,20 @@ namespace Lab3.Tests
             Assert.AreEqual(0, pls[1].state);
             Assert.AreEqual(0, pls[2].state);
             Assert.AreEqual(true, music.GetState());
-            Assert.AreEqual(Directory.GetCurrentDirectory() + "\\testMusic\\Somnus.mp3", music.GetSongURL());
+            Assert.AreEqual(url, music.GetSongURL());
         }
         [TestMethod]
         public void PlayerAnswered7()
         {
             Game game = new Game();
             game.StartGame("testMusic");
+            MusicPlayer music = game.GetMusicPlayer();
+            string firstSong = music.GetSong();
             game.PlayerAnswering(0);
             game.PlayerAnswered(0, "aaa");
             game.PlayerAnswering(2);
-            game.PlayerAnswered(2, "Somnus");
-            MusicPlayer music = game.GetMusicPlayer();
+            game.PlayerAnswered(2, firstSong);
+            music = game.GetMusicPlayer();
             List<Player> pls = game.GetPlayers();
             Assert.AreEqual(-1, pls[0].score);
             Assert.AreEqual(0, pls[1].score);
@@ -148,17 +165,25 @@ namespace Lab3.Tests
             Assert.AreEqual(0, pls[1].state);
             Assert.AreEqual(0, pls[2].state);
             Assert.AreEqual(true, music.GetState());
-            Assert.AreEqual(Directory.GetCurrentDirectory() + "\\testMusic\\The_Spirits_Converge.mp3", music.GetSongURL());
+            string s = Directory.GetCurrentDirectory() + "\\testMusic\\";
+            List<string> songs = new List<string>();
+            songs.Add(s + "Somnus.mp3");
+            songs.Add(s + "The_Spirits_Converge.mp3");
+            songs.Add(s + "Valse_di_Fantastica.mp3");
+            Assert.AreEqual(true, songs.Exists(x => x == music.GetSongURL()));
+            Assert.AreNotEqual(firstSong, music.GetSongURL());
         }
         [TestMethod]
         public void PlayerAnswered8()
         {
             Game game = new Game();
             game.StartGame("testMusic");
+            MusicPlayer music = game.GetMusicPlayer();
+            string url = music.GetSongURL();
             game.PlayerAnswering(0);
             game.PlayerAnswered(0, "aaa");
-            game.PlayerAnswered(0, "Somnus");
-            MusicPlayer music = game.GetMusicPlayer();
+            game.PlayerAnswered(0, music.GetSong());
+            music = game.GetMusicPlayer();
             List<Player> pls = game.GetPlayers();
             Assert.AreEqual(-1, pls[0].score);
             Assert.AreEqual(0, pls[1].score);
@@ -167,20 +192,22 @@ namespace Lab3.Tests
             Assert.AreEqual(0, pls[1].state);
             Assert.AreEqual(0, pls[2].state);
             Assert.AreEqual(true, music.GetState());
-            Assert.AreEqual(Directory.GetCurrentDirectory() + "\\testMusic\\Somnus.mp3", music.GetSongURL());
+            Assert.AreEqual(url, music.GetSongURL());
         }
         [TestMethod]
         public void PlayerAnswered9()
         {
             Game game = new Game();
             game.StartGame("testMusic");
+            MusicPlayer music = game.GetMusicPlayer();
+            string firstSong = music.GetSong();
             game.PlayerAnswering(0);
             game.PlayerAnswered(0, "aaa");
             game.PlayerAnswering(2);
             game.PlayerAnswered(2, "aaa");
             game.PlayerAnswering(1);
             game.PlayerAnswered(1, "aaa");
-            MusicPlayer music = game.GetMusicPlayer();
+            music = game.GetMusicPlayer();
             List<Player> pls = game.GetPlayers();
             Assert.AreEqual(-1, pls[0].score);
             Assert.AreEqual(-1, pls[1].score);
@@ -189,22 +216,29 @@ namespace Lab3.Tests
             Assert.AreEqual(0, pls[1].state);
             Assert.AreEqual(0, pls[2].state);
             Assert.AreEqual(true, music.GetState());
-            Assert.AreEqual(Directory.GetCurrentDirectory() + "\\testMusic\\The_Spirits_Converge.mp3", music.GetSongURL());
+            string s = Directory.GetCurrentDirectory() + "\\testMusic\\";
+            List<string> songs = new List<string>();
+            songs.Add(s + "Somnus.mp3");
+            songs.Add(s + "The_Spirits_Converge.mp3");
+            songs.Add(s + "Valse_di_Fantastica.mp3");
+            Assert.AreEqual(true, songs.Exists(x => x == music.GetSongURL()));
+            Assert.AreNotEqual(firstSong, music.GetSongURL());
         }
         [TestMethod]
         public void PlayerAnswered10()
         {
             Game game = new Game();
             game.StartGame("testMusic");
+            MusicPlayer music = game.GetMusicPlayer();
             game.PlayerAnswering(0);
-            game.PlayerAnswered(0, "Somnus");
+            game.PlayerAnswered(0, music.GetSong());
             game.PlayerAnswering(2);
             game.PlayerAnswered(2, "aaa");
             game.PlayerAnswering(1);
-            game.PlayerAnswered(1, "The_Spirits_Converge");
+            game.PlayerAnswered(1, music.GetSong());
             game.PlayerAnswering(1);
-            bool f = game.PlayerAnswered(1, "Valse_di_Fantastica");
-            MusicPlayer music = game.GetMusicPlayer();
+            bool f = game.PlayerAnswered(1, music.GetSong());
+            music = game.GetMusicPlayer();
             List<Player> pls = game.GetPlayers();
             Assert.AreEqual(1, pls[0].score);
             Assert.AreEqual(2, pls[1].score);

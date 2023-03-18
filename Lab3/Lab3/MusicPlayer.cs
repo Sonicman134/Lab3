@@ -14,6 +14,7 @@ namespace Lab3
         bool state = false; //Музыка играет - true, иначе - false
         string songName;
         List<string> playlist;
+        Random rand = new Random();
         public void SetPlayList(string path)
         {
             playlist = Directory.GetFiles(path).ToList();
@@ -30,8 +31,9 @@ namespace Lab3
         {
             if (playlist.Count > 0)
             {
-                SetSong(playlist[0]);
-                playlist.RemoveAt(0);
+                int a = rand.Next(playlist.Count);
+                SetSong(playlist[a]);
+                playlist.RemoveAt(a);
                 Play();
                 return true;
             }

@@ -34,6 +34,10 @@ namespace Lab3
         {
             StartGame();
         }
+        public string GetAnswer()
+        {
+            return game.GetMusicPlayer().GetSong();
+        }
         public void StartGame()
         {
             game.StartGame(startTextBox.Text);
